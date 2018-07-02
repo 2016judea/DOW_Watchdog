@@ -23,7 +23,7 @@ from email.mime.text import MIMEText
 #utilize a gmail account to send the desired text messages
 server = smtplib.SMTP("smtp.gmail.com", 587)
 server.starttls()
-server.login('aidanjude2016@gmail.com', 'Cows1876')
+server.login('YOUR_EMAIL', 'EMAIL_PASSWORD')
 #designate a text file to hold the former 52 week lows for each stock we are monitoring
 text_file = 'Stock_Daily_Lows.txt'
 count = 0
@@ -67,6 +67,6 @@ while count < len(sp_500_symbols):
     if float(get_curr_price(sp_500_symbols[count])) <= float(get_52_wk_low(sp_500_symbols[count])) or year_low_flag == True:
         message = MIMEText(str(sp_500_symbols[count]) + " has hit a 52 week low of: $" + str(get_curr_price(sp_500_symbols[count])))
         message['Subject'] = '...Stock Price Alert...'
-        server.sendmail('DOW_Watchdog', '6128367262@vtext.com', message.as_string())
+        server.sendmail('DOW_Watchdog', 'PHONE_NUMBER', message.as_string())
         year_low_flag = False
     count += 1
